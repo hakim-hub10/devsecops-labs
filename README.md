@@ -17,3 +17,9 @@ This repository contains hands-on infrastructure security, Kubernetes, and DevOp
 - UFW firewall with restricted SSH
 - Fail2ban intrusion mitigation
 - 2FA-enabled cloud account
+
+
+## Architecture
+
+See full network and security architecture:
+- [Infrastructure Architecture Diagram](docs/architecture-diagram.md)
