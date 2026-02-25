@@ -19,7 +19,8 @@
                  │                           │
                  └──────────────►   Private Admin Access
 
-      ---
+
+---
 
 ## Access Flow
 
@@ -49,4 +50,4 @@ SSH is NOT publicly exposed.
 - Control plane: VPN-based administrative access
 - Host protection: Firewall + SSH policy
 
-This architecture enforces separation between public exposure and administrative access.           
+This architecture enforces separation between public exposure and administrative access.
