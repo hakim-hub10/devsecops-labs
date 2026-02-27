@@ -92,6 +92,7 @@ services:
       - ./config/wazuh_dashboard/wazuh.yml:/usr/share/wazuh-dashboard/data/wazuh/config/wazuh.yml
       - wazuh-dashboard-config:/usr/share/wazuh-dashboard/data/wazuh/config
       - wazuh-dashboard-custom:/usr/share/wazuh-dashboard/plugins/wazuh/public/assets/custom
+      - ./config/wazuh_dashboard/nexapointit-theme.css:/usr/share/wazuh-dashboard/plugins/wazuh/public/nexapointit-theme.css
     depends_on:
       - wazuh.indexer
     links:
