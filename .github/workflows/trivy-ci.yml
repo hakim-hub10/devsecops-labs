@@ -6,7 +6,8 @@ permissions:
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -36,27 +37,27 @@ jobs:
 
 
   docker-image-scan:
-  name: Docker Image Scan
-  runs-on: ubuntu-latest
-  needs: trivy-scan
+    name: Docker Image Scan
+    runs-on: ubuntu-latest
+    needs: trivy-scan
 
-  steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Build Wazuh Dashboard Image
-      run: docker build -t wazuh-dashboard ./wazuh-docker-4.7.5/build-docker-images/wazuh-dashboard
+      - name: Build Wazuh Dashboard Image
+        run: docker build -t wazuh-dashboard ./wazuh-docker-4.7.5/build-docker-images/wazuh-dashboard
 
-    - name: Run Trivy Docker Scan
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: wazuh-dashboard
-        format: sarif
-        output: docker-trivy-results.sarif
-        severity: HIGH,CRITICAL
-        ignore-unfixed: true
+      - name: Run Trivy Docker Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: wazuh-dashboard
+          format: sarif
+          output: docker-trivy-results.sarif
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
 
-    - name: Upload Docker Scan Results
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: docker-trivy-results.sarif
+      - name: Upload Docker Scan Results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: docker-trivy-results.sarif
